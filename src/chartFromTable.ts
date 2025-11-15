@@ -15,6 +15,7 @@ width: 80%
 beginAtZero: true
 \`\`\``;
 
+    console.log("A");
     editor.replaceSelection(chart);
 }
 
@@ -37,6 +38,12 @@ export function generateTableData(table: string, layout: 'columns' | 'rows', sel
     if(selected) {
         dataFields = dataFields.filter(value => selected.contains(value.dataTitle));
     }
+//    console.log("B1",labels,dataFields);
+    //debugger;
+    dataFields.forEach(m=>{m["data"]=m["data"].map(x=>x===''?null:x)})
+    //dataFields[0]["data"]=dataFields[0]["data"].map(x=>x===''?null:x);
+    console.log("B2",labels,dataFields);
+
 
     return {labels, dataFields};
 }
